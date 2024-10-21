@@ -45,6 +45,7 @@ class ParticipantDisqualificationProcedure extends AbstractProcedure
             FIELD_TOURNAMENT_ID         => $repository->tournament_id,
             FIELD_TOURNAMENT_ADMIN_ID   => ATTRIBUTES[FIELD_ADMIN_ID],
             FIELD_STATUS                => STATUS_DISQUALIFICATION,
+            FIELD_USER_ID               => ATTRIBUTES[FIELD_USER_ID],
             FIELD_DESCRIPTION           => DESCRIPTION_DISQUALIFICATION,
             FIELD_CURRENT_DATE          => Carbon::today(),
             FIELD_CURRENT_TIME          => Carbon::now()->format('H:i:s'),

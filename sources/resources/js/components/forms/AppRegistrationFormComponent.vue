@@ -197,6 +197,7 @@
                             event_id: this.eventId,
                             user_id: this.user.id,
                             invited_user_id: this.inviteUserId,
+                            admin_id: this.inviteUserId
                         };
                         let attributesOptions = [
                             {
@@ -221,7 +222,7 @@
                             i++;
                         }
                         await this.eventRecord(attributesRecord);
-                        window.location = this.baseUrl + ENDPOINTS.LOGIN;
+                        // window.location = this.baseUrl + ENDPOINTS.LOGIN;
                         return;
                     }
 
@@ -231,7 +232,7 @@
                             const data = response.data.result.original;
                             await this.$emit('messageSuccessEmit', MESSAGES.FORM_SUCCESS);
                             this.userModel = Object.assign(new UserModel(), data.attributes);
-                            window.location = this.baseUrl + ENDPOINTS.LOGIN;
+                            // window.location = this.baseUrl + ENDPOINTS.LOGIN;
                         })
                         .catch(async (error) => {
                             console.log(error)

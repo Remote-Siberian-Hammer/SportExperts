@@ -14,7 +14,7 @@
             return {
                 currentDate: new Date(),
                 participantList: null,
-                tournamentFree: null,
+                tournamentFree: [],
                 values: null,
                 eventKey: null,
             };
@@ -76,7 +76,7 @@
                             request_data: attributes.toString(),
                             message: error.message
                         });
-                        await this.$emit('messageErrorEmit', MESSAGES.NO_DATA + '1');
+                        await this.$emit('messageErrorEmit', MESSAGES.NO_DATA);
                     });
             },
             getFreeParticipantList: async function() {
@@ -177,12 +177,15 @@
 <template>
     <Card class="mb-3 w-95 h-40">
         <template #content>
-            <section v-if="this.tournamentFree !== null">
+            <section v-if="this.tournamentFree.length > 0">
                 <h3>Свободные спортсмены</h3>
                 <OrderList v-model="this.tournamentFree" listStyle="height:auto" dataKey="id">
                     <template #item="slotProps">
                         <section class="d-flex d-between d-align-center">
+                            <!--
                             <section class="w-70">
+                            -->
+                            <section class="w-100">
                                 <p>{{ slotProps.item.users.first_name }} {{ slotProps.item.users.last_name }}</p>
                                 <small>Возраст: {{ slotProps.item.users.age }}
                                     <span v-for="option in slotProps.item.users.options" :key="option.name">
@@ -191,12 +194,14 @@
                                     </span>
                                 </small>
                             </section>
+                            <!--
                             <section class="w-30 d-flex d-end">
                                 <Button v-if="this.eventStatusProps === 'Active' && this.roleProps === 'OWNER' || this.roleProps === 'ADMIN'"
                                         icon="pi pi-arrow-right"
                                         aria-label="Success"
                                         @click="this.createParticipantTournament(slotProps.item.users.id)" />
                             </section>
+                            -->
                         </section>
                     </template>
                 </OrderList>

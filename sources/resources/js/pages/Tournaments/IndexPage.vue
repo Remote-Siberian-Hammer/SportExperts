@@ -1,5 +1,5 @@
 <script>
-    import {BASE_URL, MESSAGES, ENDPOINTS, IDENTIFIER} from '../../constant';
+import {BASE_URL, MESSAGES, ENDPOINTS, IDENTIFIER, TRIGGER} from '../../constant';
     import { createLogOptionRequest } from "../../api/CreateLogOptionRequest";
     import {getKeyEventRequest, statusEventUpdate} from "../../api/EventRequest";
     import AppParticipantInfoModalComponent from "../../components/modals/AppParticipantInfoModalComponent.vue";
@@ -169,14 +169,39 @@
                             message: error.message
                         });
                     });
+            },
+            getTrigger: function () {
+                setInterval(async () => {
+                    if (window.$cookies.get(TRIGGER)) {
+                        await this.readTournament();
+                        window.$cookies.remove(TRIGGER);
+                    }
+                }, 2000);
             }
         },
+        /*watch: {
+            triggerUpdateTournament: {
+                handler(data) {
+                    this.baseUrl = data;
+                },
+                immediate: true,
+                deep: true
+            }
+        },
+        mounted() {
+            this.$nextTick(async function () {
+                if (window.$cookies.get(TRIGGER)) {
+                    await this.readTournament();
+                }
+            })
+        },*/
         async beforeMount() {
             this.getUrl();
             await this.userIdentifier();
             await this.getEvent(this.eventKey);
             await this.readTournament();
             await this.getAdmins();
+            await this.getTrigger();
         }
     };
 </script>

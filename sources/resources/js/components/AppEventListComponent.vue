@@ -112,7 +112,7 @@
             <template #footer>
                 <span>Даты проведения:</span>
                 <div class="d-flex d-between">
-                    <strong>
+                    <strong style="margin: 0.6em;">
                         <div>
                             <i class="pi pi-calendar-plus" style="
                                     font-weight: bold;
@@ -136,7 +136,7 @@
                         </a>
                         <a v-else
                            :href="this.baseUrlProps + this.routeProps.EVENT + this.routeProps.BASE + this.routeProps.DETAIL + '?id=' + event.id">
-                            <Button label="Записаться 1"
+                            <Button label="Записаться"
                                     severity="secondary"
                                     outlined
                                     class="w-100" />
@@ -158,7 +158,7 @@
                 <section>
                     <a v-if="!this.user"
                        :href="this.baseUrlProps + this.routeProps.EVENT + '/detail?id=' + event.id">
-                        <Button label="Записаться"
+                        <Button label="Подробнее"
                                 severity="secondary"
                                 outlined
                                 class="w-100" />
@@ -172,3 +172,17 @@
     </section>
 </template>
 
+<style scoped>
+.p-button{
+    background-color: #222;
+    color: #fff;
+}
+.p-button:hover {
+    transition: .6s;
+    background-color: #f8fafc;
+    color: #222;
+}
+.p-button-label{
+    font-weight: bold!important;
+}
+</style>

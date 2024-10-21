@@ -22,6 +22,10 @@ export default {
             Tag
         },
         methods: {
+            formatDate: (inputDate) => {
+                const [year, month, day] = inputDate.split('-');
+                return `${day.padStart(2, '0')}.${month.padStart(2, '0')}.${year}`;
+            },
             getUrl: function() {
                 const urlParams = new URLSearchParams(window.location.search);
                 this.eventKey = urlParams.get('event');
@@ -101,8 +105,8 @@ export default {
                 <Column field="description" header="Описание"></Column>
                 <Column  header="Дата/Время">
                     <template #body="slotProps">
-                        <section>{{ slotProps.data.current_date }}</section>
-                        <section>{{ slotProps.data.current_time }}</section>
+                        <section>{{ this.formatDate(slotProps.data.current_date) }}</section>
+                        <section>{{ slotProps.data.current_time.slice(0, -3) }}</section>
                     </template>
                 </Column>
             </DataTable>

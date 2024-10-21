@@ -22,7 +22,7 @@ class AddAdminJob implements ShouldQueue
     public function handle(): void
     {
         $repository = new TournamentAdminRepository();
-        if (!empty($repository->isAdmin($this->attributes))) {
+        if (empty($repository->isAdmin($this->attributes))) {
             $repository->store($this->attributes);
         }
     }

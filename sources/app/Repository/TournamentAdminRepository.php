@@ -33,6 +33,8 @@ final class TournamentAdminRepository implements LCRUD_OperationInterface
         return $this->model::where([FIELD_TOURNAMENT_ID => $tournament->id])->get();
     }
 
+
+
     public function isAdmin(array $attributes) {
         return $this->model::where($attributes)->first();
     }

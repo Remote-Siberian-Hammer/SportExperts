@@ -163,7 +163,11 @@ export default {
                                         {{ this.formatDate(slotProps.data.start_date) }}
                                     </template>
                                 </Column>
-                                <Column field="start_time" header="Время старта" sortable></Column>
+                                <Column header="Время старта" sortable>
+                                    <template #body="slotProps">
+                                        {{ slotProps.data.start_time.slice(0, -3) }}
+                                    </template>
+                                </Column>
                             </DataTable>
                         </template>
                     </DataTable>

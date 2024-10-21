@@ -31,6 +31,10 @@ import Button from "primevue/button";
             Button
         },
         methods: {
+            formatDate: (inputDate) => {
+                const [year, month, day] = inputDate.split('-');
+                return `${day.padStart(2, '0')}.${month.padStart(2, '0')}.${year}`;
+            },
             getEventOwner: async function ()
             {
                 if  (this.userProps && this.userProps.role === 'admin') {
@@ -196,8 +200,8 @@ import Button from "primevue/button";
                                                         <p>
                                                             <strong>{{ event.name }}</strong>
                                                         </p>
-                                                        <small>{{ event.start_date }} {{ event.start_time }}</small><br />
-                                                        <small>{{ event.expiration_date }} {{ event.expiration_time }}</small>
+                                                        <small>{{ this.formatDate(event.start_date) }} {{ event.start_time.slice(0, -3) }}</small><br />
+                                                        <small>{{ this.formatDate(event.expiration_date) }} {{ event.expiration_time.slice(0, -3) }}</small>
                                                     </section>
                                                     <section>
                                                         <section>

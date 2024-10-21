@@ -46,6 +46,8 @@ class ParticipantКReplacementProcedure extends AbstractProcedure
             FIELD_TOURNAMENT_ID         => $repository->tournament_id,
             FIELD_TOURNAMENT_ADMIN_ID   => ATTRIBUTES[FIELD_ADMIN_ID],
             FIELD_STATUS                => STATUS_REPLACEMENT,
+            FIELD_USER_ID               => ATTRIBUTES[FIELD_USER_ID],
+            FIELD_NEW_PARTICIPANT_KEY   => ATTRIBUTES[FIELD_NEW_PARTICIPANT_KEY],
             FIELD_DESCRIPTION           => DESCRIPTION_REPLACEMENT,
             FIELD_CURRENT_DATE          => Carbon::today(),
             FIELD_CURRENT_TIME          => Carbon::now()->format('H:i:s'),
