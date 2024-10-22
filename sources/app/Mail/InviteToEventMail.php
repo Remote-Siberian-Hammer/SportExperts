@@ -22,6 +22,10 @@ class InviteToEventMail extends Mailable
     public function build(): InviteToEventMail
     {
         return $this->subject('Приглашение на событие!')
-            ->view('email.invite.index', ['attributes' => $this->attributes]);
+            ->view('email.invite.index', [
+            'attributes'    => $this->attributes,
+            'host'          => env('DEBUG') ? 'http://localhost' : env('HTTP_PRODUCTION_DOMAIN'),
+            'port'          => env('DEBUG') ? env('HTTP_PORT') : env('HTTP_PRODUCTION_PORT'),
+            ]);
     }
 }

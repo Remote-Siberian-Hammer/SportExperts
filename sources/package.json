@@ -17,6 +17,7 @@
     "dependencies": {
         "@vkid/sdk": "^2.3.2",
         "@vueup/vue-quill": "^1.2.0",
+        "dotenv": "^16.4.5",
         "leader-line-new": "^1.1.9",
         "leader-line-vue": "^2.1.1",
         "primeicons": "^7.0.0",
