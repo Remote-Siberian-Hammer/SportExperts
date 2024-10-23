@@ -184,7 +184,7 @@
                         label="Добавить параметры"
                         class="w-100 mt-3"
                         severity="success"
-                        @click="this.setUserOptions"/>
+                        @click="this.setUserOptions" />
             </AppFormWrapperComponent>
         </section>
     </Dialog>

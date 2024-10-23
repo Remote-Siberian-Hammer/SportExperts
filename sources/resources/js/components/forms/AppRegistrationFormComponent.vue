@@ -36,6 +36,7 @@
                 baseUrl: null,
                 inviteUserId: null,
                 roles: ['Администратор', 'Спортсмен'],
+                errors: null,
                 user: {
                     firstName: null,
                     firstNameEng: null,
@@ -93,6 +94,9 @@
                 const month = String(dateObj.getMonth() + 1).padStart(2, '0');
                 const year = dateObj.getFullYear();
                 return `${day}.${month}.${year}`;
+            },
+            isValid: function(fields) {
+                this.errors = fields
             },
             getAttributes: async function() {
                 let attributes = {
@@ -229,6 +233,10 @@
                     registrationRequest(attributes)
                         .then(async (response) => {
                             console.log(response);
+                            if ('error' in response.data) {
+                                this.isValid(response.data.error.data);
+                                return;
+                            }
                             const data = response.data.result.original;
                             await this.$emit('messageSuccessEmit', MESSAGES.FORM_SUCCESS);
                             this.userModel = Object.assign(new UserModel(), data.attributes);
@@ -291,14 +299,27 @@
                 <InputText type="text"
                            v-model="this.user.firstName"
                            @input="this.translationFirstName($event)"
-                           class="w-100" />
+                           class="w-100"
+                           :invalid="this.errors !== null && 'first_name' in this.errors" />
+                <section id="errorField" v-if="this.errors !== null && 'first_name' in this.errors">
+                    <small v-for="error in this.errors.first_name">
+                        <i class="pi pi-times-circle"></i> {{ error }}
+                    </small>
+                </section>
+
             </div>
             <div class="form-block w-46">
                 <label for="lastName">Фамилия</label>
                 <InputText type="text"
                            v-model="this.user.lastName"
                            @input="translationLastName($event)"
-                           class="w-100" />
+                           class="w-100"
+                           :invalid="this.errors !== null && 'last_name' in this.errors" />
+                <section id="errorField" v-if="this.errors !== null && 'last_name' in this.errors">
+                    <small v-for="error in this.errors.last_name">
+                        <i class="pi pi-times-circle"></i> {{ error }}
+                    </small>
+                </section>
             </div>
         </div>
         <div class="d-flex d-between">
@@ -306,34 +327,64 @@
                 <label for="nameLat">Имя на латинице</label>
                 <InputText type="text"
                            v-model="this.user.firstNameEng"
-                           class="w-100" />
+                           class="w-100"
+                           :invalid="this.errors !== null && 'first_name_eng' in this.errors" />
+                <section id="errorField" v-if="this.errors !== null && 'first_name_eng' in this.errors">
+                    <small v-for="error in this.errors.first_name_eng">
+                        <i class="pi pi-times-circle"></i> {{ error }}
+                    </small>
+                </section>
             </div>
             <div class="form-block w-46">
                 <label for="lastNameLat">Фамилия на латинице</label>
                 <InputText type="text"
                            v-model="this.user.lastNameEng"
-                           class="w-100" />
+                           class="w-100"
+                           :invalid="this.errors !== null && 'last_name_eng' in this.errors" />
+                <section id="errorField" v-if="this.errors !== null && 'first_name' in this.errors">
+                    <small v-for="error in this.errors.first_name">
+                        <i class="pi pi-times-circle"></i> {{ error }}
+                    </small>
+                </section>
             </div>
         </div>
         <div class="form-block">
             <label for="#">email</label>
             <InputText type="email"
                        v-model="this.user.email"
-                       class="w-100" />
+                       class="w-100"
+                       :invalid="this.errors !== null && 'email' in this.errors" />
+            <section id="errorField" v-if="this.errors !== null && 'email' in this.errors">
+                <small v-for="error in this.errors.email">
+                    <i class="pi pi-times-circle"></i> {{ error }}
+                </small>
+            </section>
         </div>
         <div class="form-block">
             <label for="tel">Номер телефона</label>
             <InputMask id="tel"
                        v-model="this.user.phone"
                        mask="+7 (999) 999-99-99"
-                       class="w-100" />
+                       class="w-100"
+                       :invalid="this.errors !== null && 'phone' in this.errors" />
+            <section id="errorField" v-if="this.errors !== null && 'phone' in this.errors">
+                <small v-for="error in this.errors.phone">
+                    <i class="pi pi-times-circle"></i> {{ error }}
+                </small>
+            </section>
         </div>
         <div class="d-flex d-between">
             <div class="form-block w-46">
                 <label for="#">Дата рождения</label>
                 <InputText type="date"
                            v-model="this.user.birthDate"
-                           class="w-100"/>
+                           class="w-100"
+                           :invalid="this.errors !== null && 'birth_date' in this.errors" />
+                <section id="errorField" v-if="this.errors !== null && 'birth_date' in this.errors">
+                    <small v-for="error in this.errors.birth_date">
+                        <i class="pi pi-times-circle"></i> {{ error }}
+                    </small>
+                </section>
             </div>
             <div class="form-block w-46">
                 <label for="#">Укажите ваш пол</label>
@@ -373,7 +424,13 @@
                       promptLabel="Введите пароль"
                       weakLabel="Простой пароль"
                       mediumLabel="Пароль средней сложности"
-                      strongLabel="Сложный пароль" />
+                      strongLabel="Сложный пароль"
+                      :invalid="this.errors !== null && 'password' in this.errors" />
+            <section id="errorField" v-if="this.errors !== null && 'password' in this.errors">
+                <small v-for="error in this.errors.password">
+                    <i class="pi pi-times-circle"></i> {{ error }}
+                </small>
+            </section>
         </div>
         <div class="form-block">
             <label for="#">Повторите пароль</label>

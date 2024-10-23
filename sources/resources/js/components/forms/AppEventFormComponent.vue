@@ -24,6 +24,7 @@
             return {
                 baseUrl: null,
                 currentDate: new Date(),
+                errors: [],
                 file: null,
                 event: {
                     user_id: 1,
@@ -68,6 +69,9 @@
                 await formData.append("file", this.$refs.fileInput.files[0]);
                 return uploadFileRequest(formData);
             },
+            isValid: function(fields) {
+                this.errors = fields
+            },
             createFile: async function ()
             {
                 let attributes = '<FILE>';
@@ -75,6 +79,10 @@
                     let inputFile = await this.onUpload()
                         .then(async (response) => {
                             console.log(response);
+                            if ('error' in response.data) {
+                                this.isValid(response.data.error.data);
+                                return;
+                            }
                             const data = response.data.attributes;
                             this.file = await data.key;
                         })
@@ -113,6 +121,10 @@
                 await updateEventRequest(attributes)
                     .then(async (response) => {
                         console.log(response);
+                        if ('error' in response.data) {
+                            this.isValid(response.data.error.data);
+                            return;
+                        }
                         const data = response.data.result.original;
                         this.event = await data.attributes;
                         this.$emit('messageSuccessEmit', MESSAGES.FORM_SUCCESS);
@@ -147,6 +159,10 @@
                 await createEventRequest(attributes)
                     .then(async (response) => {
                         console.log(response);
+                        if ('error' in response.data) {
+                            this.isValid(response.data.error.data);
+                            return;
+                        }
                         const data = response.data.result.original;
                         this.event = await data.attributes;
                         this.$emit('messageSuccessEmit', MESSAGES.FORM_SUCCESS);
@@ -183,6 +199,13 @@
                         id: this.options[idx].id
                     };
                     await deleteOptionRequest(attributes)
+                        .then((response) => {
+                            console.log(response);
+                            if ('error' in response.data) {
+                                this.isValid(response.data.error.data);
+                                return;
+                            }
+                        })
                         .catch(async(error) => {
                             console.log(error);
                             await createLogOptionRequest({
@@ -214,6 +237,10 @@
                     await createEventOptionRequest(attributes)
                         .then(async (response) => {
                             console.log(response);
+                            if ('error' in response.data) {
+                                this.isValid(response.data.error.data);
+                                return;
+                            }
                             this.event = await response.data.result.original;
                         })
                         .catch(async (error) => {
@@ -246,6 +273,10 @@
                         await updateEventOptionRequest(attributes)
                             .then(async (response) => {
                                 console.log(response);
+                                if ('error' in response.data) {
+                                    this.isValid(response.data.error.data);
+                                    return;
+                                }
                                 this.options = response.data.result.original;
                             })
                             .catch(async (error) => {
@@ -272,6 +303,11 @@
                         };
                         await createEventOptionRequest(attributes)
                             .then(async (response) => {
+                                console.log(response);
+                                if ('error' in response.data) {
+                                    this.isValid(response.data.error.data);
+                                    return;
+                                }
                                 this.options = await response.data.result.original;
                             })
                             .catch(async (error) => {
@@ -342,14 +378,26 @@
             <label for="#">Введите название мероприятия</label>
             <InputText type="text"
                        v-model="event.name"
-                       class="w-100"/>
+                       class="w-100"
+                       :invalid="this.errors !== null && 'name' in this.errors" />
+            <section id="errorField" v-if="this.errors !== null && 'name' in this.errors">
+                <small v-for="error in this.errors.name">
+                    <i class="pi pi-times-circle"></i> {{ error }}
+                </small>
+            </section>
         </div>
         <div class="form-block">
             <label for="#">Введите описание</label>
             <QuillEditor ref="editor"
                          v-model:content="event.description"
                          :options="editor"
-                         content-type="html"/>
+                         content-type="html"
+                         :invalid="this.errors !== null && 'description' in this.errors" />
+            <section id="errorField" v-if="this.errors !== null && 'description' in this.errors">
+                <small v-for="error in this.errors.description">
+                    <i class="pi pi-times-circle"></i> {{ error }}
+                </small>
+            </section>
         </div>
         <div class="form-block">
             <Card>
@@ -372,6 +420,11 @@
                                     accept="image/*"
                                     :maxFileSize="1000000"
                                     chooseLabel="Загрузить" />
+                        <section id="errorField" v-if="this.errors !== null && 'image' in this.errors">
+                            <small v-for="error in this.errors.image">
+                                <i class="pi pi-times-circle"></i> {{ error }}
+                            </small>
+                        </section>
                     </section>
                 </template>
             </Card>
@@ -380,33 +433,63 @@
             <label for="#">Укажите место проведения мероприятия</label>
             <InputText type="text"
                        v-model="event.location"
-                       class="w-100"/>
+                       class="w-100"
+                       :invalid="this.errors !== null && 'description' in this.errors" />
             <small id="username-help">Желательный формат: Город, улица, номер дома</small>
+            <section id="errorField" v-if="this.errors !== null && 'location' in this.errors">
+                <small v-for="error in this.errors.location">
+                    <i class="pi pi-times-circle"></i> {{ error }}
+                </small>
+            </section>
         </div>
         <div class="d-flex d-between">
             <div class="form-block w-70">
                 <label for="#">Укажите дату старта</label>
                 <Calendar v-model="event.start_date"
-                          class="w-70" />
+                          class="w-70"
+                          :invalid="this.errors !== null && 'start_date' in this.errors" />
+                <section id="errorField" v-if="this.errors !== null && 'start_date' in this.errors">
+                    <small v-for="error in this.errors.start_date">
+                        <i class="pi pi-times-circle"></i> {{ error }}
+                    </small>
+                </section>
             </div>
             <div class="form-block w-70">
                 <label for="#">Укажите время старта</label>
                 <InputText type="time"
                            v-model="event.start_time"
-                           class="w-70" />
+                           class="w-70"
+                           :invalid="this.errors !== null && 'start_time' in this.errors" />
+                <section id="errorField" v-if="this.errors !== null && 'start_time' in this.errors">
+                    <small v-for="error in this.errors.start_time">
+                        <i class="pi pi-times-circle"></i> {{ error }}
+                    </small>
+                </section>
             </div>
         </div>
         <div class="d-flex d-between">
             <div class="form-block w-70">
                 <label for="#">Укажите дату старта</label>
                 <Calendar v-model="event.expiration_date"
-                          class="w-70" />
+                          class="w-70"
+                          :invalid="this.errors !== null && 'expiration_date' in this.errors" />
+                <section id="errorField" v-if="this.errors !== null && 'expiration_date' in this.errors">
+                    <small v-for="error in this.errors.expiration_date">
+                        <i class="pi pi-times-circle"></i> {{ error }}
+                    </small>
+                </section>
             </div>
             <div class="form-block w-70">
                 <label for="#">Укажите время старта</label>
                 <InputText type="time"
                            v-model="event.expiration_time"
-                           class="w-70" />
+                           class="w-70"
+                           :invalid="this.errors !== null && 'expiration_time' in this.errors" />
+                <section id="errorField" v-if="this.errors !== null && 'expiration_time' in this.errors">
+                    <small v-for="error in this.errors.expiration_time">
+                        <i class="pi pi-times-circle"></i> {{ error }}
+                    </small>
+                </section>
             </div>
         </div>
         <section class="mb-5">
@@ -438,11 +521,21 @@
                         <section class="mb-3">
                             <div class="mb-3">
                                 <label for="#">Название параметра</label>
-                                <InputText type="text" v-model="this.optionName" class="w-100" />
+                                <InputText type="text"
+                                           v-model="this.optionName"
+                                           class="w-100" />
                             </div>
                             <div class="mb-3">
                                 <label for="#">Значение параметра</label>
-                                <InputText type="text" v-model="this.optionValue" class="w-100" />
+                                <InputText type="text"
+                                           v-model="this.optionValue"
+                                           class="w-100"
+                                           :invalid="this.errors !== null && 'value' in this.errors" />
+                                <section id="errorField" v-if="this.errors !== null && 'value' in this.errors">
+                                    <small v-for="error in this.errors.value">
+                                        <i class="pi pi-times-circle"></i> {{ error }}
+                                    </small>
+                                </section>
                             </div>
                             <Button type="button"
                                     label="Добавить параметр"
@@ -473,7 +566,3 @@
         </section>
     </section>
 </template>
-
-<style scoped>
-
-</style>

@@ -273,3 +273,8 @@ ul.p-listbox-list{
     color: #cf3232;
     font-weight: bold;
 }
+#errorField{
+    color: #d75252;
+    font-weight: 500;
+    padding: 0.4em;
+}

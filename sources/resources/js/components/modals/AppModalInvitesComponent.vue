@@ -22,6 +22,7 @@
                 invitedEmail: '',
                 messageInviteDialogSuccess: null,
                 messageInviteDialogError: null,
+                errors: []
             };
         },
         props: {
@@ -58,6 +59,9 @@
                         this.messageError = MESSAGES.LOADING_ERROR + ' 3';
                     });
             },
+            isValid: function(fields) {
+                this.errors = fields
+            },
             recordAndInvitedUser: async function() {
                 let attributes = {
                     email: this.invitedEmail,
@@ -68,6 +72,10 @@
                 await addNotificationUserInviteEventRequest(attributes)
                     .then(async (response) => {
                         console.log(response);
+                        if ('error' in response.data) {
+                            this.isValid(response.data.error.data);
+                            return;
+                        }
                         const data = await response.data.result.original;
                         this.messageInviteDialogSuccess = await data.attributes ? MESSAGES.FORM_SUCCESS : MESSAGES.ERROR_ERROR;
                         this.invitedEmail = '';
@@ -184,7 +192,13 @@
             <label class="font-semibold w-6rem">Отправить приглашение по E-mail</label>
             <InputText type="email"
                        v-model="this.invitedEmail"
-                       class="w-100" />
+                       class="w-100"
+                       :invalid="this.errors !== null && 'email' in this.errors" />
+            <section id="errorField" v-if="this.errors !== null && 'email' in this.errors">
+                <small v-for="error in this.errors.email">
+                    <i class="pi pi-times-circle"></i> {{ error }}
+                </small>
+            </section>
         </div>
         <div class="mb-3">
             <Button label="Записать на событие"

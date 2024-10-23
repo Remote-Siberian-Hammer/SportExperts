@@ -13,6 +13,7 @@
           return {
               currentDate: new Date(),
               user: null,
+              errors: [],
               roles: ['Администратор', 'Спортсмен'],
           }
         },
@@ -27,6 +28,9 @@
             SelectButton
         },
         methods: {
+            isValid: function(fields) {
+                this.errors = fields
+            },
             dateFormat: async function(dateStr) {
                 const dateObj = await new Date(dateStr);
                 const day = String(dateObj.getDate()).padStart(2, '0');
@@ -47,6 +51,10 @@
                 await updateUserRequest(attributes)
                     .then((response) => {
                         console.log(response);
+                        if ('error' in response.data) {
+                            this.isValid(response.data.error.data);
+                            return;
+                        }
                         this.messageSuccess = 'Данные сохранены';
                         this.$emit('messageSuccessEmit', MESSAGES.FORM_SUCCESS);
                     })
@@ -90,7 +98,12 @@
                            v-model="this.user.first_name"
                            class="w-100"
                            :value="this.user.first_name"
-                           required />
+                           :invalid="this.errors !== null && 'first_name' in this.errors" />
+                <section id="errorField" v-if="this.errors !== null && 'first_name' in this.errors">
+                    <small v-for="error in this.errors.first_name">
+                        <i class="pi pi-times-circle"></i> {{ error }}
+                    </small>
+                </section>
             </div>
         </section>
         <section class="d-flex d-center">
@@ -100,7 +113,12 @@
                            v-model="this.user.first_name_eng"
                            class="w-100"
                            :value="this.user.first_name_eng"
-                           required />
+                           :invalid="this.errors !== null && 'first_name_eng' in this.errors" />
+                <section id="errorField" v-if="this.errors !== null && 'first_name_eng' in this.errors">
+                    <small v-for="error in this.errors.first_name_eng">
+                        <i class="pi pi-times-circle"></i> {{ error }}
+                    </small>
+                </section>
             </div>
         </section>
         <section class="d-flex d-center">
@@ -110,7 +128,12 @@
                            v-model="this.user.last_name"
                            class="w-100"
                            :value="this.user.last_name"
-                           required />
+                           :invalid="this.errors !== null && 'last_name' in this.errors" />
+                <section id="errorField" v-if="this.errors !== null && 'last_name' in this.errors">
+                    <small v-for="error in this.errors.last_name">
+                        <i class="pi pi-times-circle"></i> {{ error }}
+                    </small>
+                </section>
             </div>
         </section>
         <section class="d-flex d-center">
@@ -120,7 +143,12 @@
                            v-model="this.user.last_name_eng"
                            class="w-100"
                            :value="this.user.last_name_eng"
-                           required />
+                           :invalid="this.errors !== null && 'last_name_eng' in this.errors" />
+                <section id="errorField" v-if="this.errors !== null && 'last_name_eng' in this.errors">
+                    <small v-for="error in this.errors.last_name_eng">
+                        <i class="pi pi-times-circle"></i> {{ error }}
+                    </small>
+                </section>
             </div>
         </section>
         <!-- <section class="d-flex d-center">
@@ -144,7 +172,12 @@
                           :value="this.user.birth_date"
                           dateFormat="dd.mm.yyyy"
                           showIcon
-                          required />
+                          :invalid="this.errors !== null && 'birth_date' in this.errors" />
+                <section id="errorField" v-if="this.errors !== null && 'birth_date' in this.errors">
+                    <small v-for="error in this.errors.birth_date">
+                        <i class="pi pi-times-circle"></i> {{ error }}
+                    </small>
+                </section>
             </div>
         </section>
         <Button type="button"

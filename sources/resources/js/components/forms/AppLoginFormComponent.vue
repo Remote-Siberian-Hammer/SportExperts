@@ -10,6 +10,7 @@
     export default {
         data() {
           return {
+              errors: [],
               email: null,
               password: null,
               currentDate: new Date(),
@@ -27,6 +28,9 @@
             AppFormWrapperComponent,
         },
         methods: {
+            isValid: function(fields) {
+                this.errors = fields
+            },
             authorizationRequest: async function () {
                 const attributes = {
                     email: this.email,
@@ -35,6 +39,10 @@
                 await authorizationRequest(attributes)
                     .then(async (response) => {
                         console.log(response);
+                        if ('error' in response.data) {
+                            this.isValid(response.data.error.data);
+                            return;
+                        }
                         try {
                             const data = response.data.result.original;
                             const attributes = data.attributes;
@@ -69,13 +77,25 @@
             <label for="#">Введите логин</label>
             <InputText type="email"
                        v-model="email"
-                       class="w-100"/>
+                       class="w-100"
+                       :invalid="this.errors !== null && 'email' in this.errors" />
+            <section id="errorField" v-if="this.errors !== null && 'email' in this.errors">
+                <small v-for="error in this.errors.email">
+                    <i class="pi pi-times-circle"></i> {{ error }}
+                </small>
+            </section>
         </div>
         <div class="form-block">
             <label for="#">Введите пароль</label>
             <InputText type="password"
                        v-model="password"
-                       class="w-100"/>
+                       class="w-100"
+                       :invalid="this.errors !== null && 'password' in this.errors" />
+            <section id="errorField" v-if="this.errors !== null && 'password' in this.errors">
+                <small v-for="error in this.errors.password">
+                    <i class="pi pi-times-circle"></i> {{ error }}
+                </small>
+            </section>
         </div>
         <div class="form-block d-flex d-between">
             <a :href="this.baseUrl + this.endPoint">
