@@ -11,7 +11,8 @@
         {
             return {
                 currentDate: new Date(),
-                phone: null
+                phone: null,
+                errors: []
             };
         },
         props: {
@@ -24,6 +25,9 @@
 
         },
         methods: {
+            isValid: function(fields) {
+                this.errors = fields
+            },
             userPhoneUpdate: async function ()
             {
                 let attributes = {
@@ -33,6 +37,10 @@
                 await updateUserRequest(attributes)
                     .then((response) => {
                         console.log(response);
+                        if ('error' in response.data) {
+                            this.isValid(response.data.error.data);
+                            return;
+                        }
                         this.$emit('messageSuccessEmit', MESSAGES.FORM_SUCCESS);
                     })
                     .catch(async (error) => {
@@ -71,7 +79,12 @@
                            class="w-100"
                            :value="this.phone"
                            mask="+7 (999) 999-99-99"
-                           required />
+                           :invalid="this.errors !== null && 'phone' in this.errors" />
+                <section id="errorField" v-if="this.errors !== null && 'phone' in this.errors">
+                    <small v-for="error in this.errors.phone">
+                        <i class="pi pi-times-circle"></i> {{ error }}
+                    </small>
+                </section>
             </div>
         </section>
         <Button type="button"

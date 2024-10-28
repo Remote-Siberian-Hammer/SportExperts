@@ -24,7 +24,7 @@
                              class="option-list">
                         <div class="mb-3">
                             <strong>
-                                <a href="#">{{ option.name }}</a>
+                                <a href="#" class="text-link">{{ option.name }}</a>
                             </strong><br>
                             <span>{{ option.value }}</span>
                         </div>

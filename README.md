@@ -13,9 +13,6 @@
         <a href="#">MongoDB 4</a>
     </li>
     <li>
-        <a href="#">Python 3</a>
-    </li>
-    <li>
         <a href="#">JavaScript (Vue 3)</a>
     </li>
     <li>
@@ -27,16 +24,16 @@
 <ul>
     <li>
         <p>
-            <span>Поднять docker:</span><br>
-            <b style="color: #222;">(sudo) docker-compose up --build -d</b>
+            <span>Создать/настроить конфиг, как минимум надо настроить подключение к БД:</span><br>
+            <b style="color: #222;">(sudo) cp .example.env .env</b><br>
+            <span>Так же рекоммендуется создацть коллекцию для журнала ошибок.</span><br>
         </p>
     </li>
     <br />
     <li>
         <p>
-            <span>Создать/настроить конфиг, как минимум надо настроить подключение к БД:</span><br>
-            <b style="color: #222;">(sudo) cp .example.env .env</b><br>
-            <span>Так же рекоммендуется создацть коллекцию для журнала ошибок.</span><br>
+            <span>Поднять docker:</span><br>
+            <b style="color: #222;">(sudo) docker-compose up --build -d</b>
         </p>
     </li>
     <br />
@@ -53,7 +50,7 @@
         <p>
             <span>Установить зависимости:</span><br>
             <b style="color: #222;">(sudo) docker-compose run php-fpm composer install</b><br>
-            <b style="color: #222;">(sudo) docker-compose run node npm install</b><br>
+            <b style="color: #222;">(sudo) docker-compose run node install</b><br>
         </p>
     </li>
     <br />

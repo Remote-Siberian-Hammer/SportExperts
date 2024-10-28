@@ -12,7 +12,7 @@
           return {
               email: null,
               currentDate: new Date(),
-              error: []
+              errors: []
           };
         },
         components: {
@@ -22,6 +22,9 @@
             AppFormWrapperComponent
         },
         methods: {
+            isValid: function(fields) {
+                this.errors = fields
+            },
             resetNotification: async function() {
                 const attributes = {
                     email: this.email
@@ -34,6 +37,10 @@
                 await resetToPasswordRequest(attributes)
                     .then(async (response) => {
                         console.log(response);
+                        if ('error' in response.data) {
+                            this.isValid(response.data.error.data);
+                            return;
+                        }
                         await this.$emit('messageSuccessEmit', MESSAGES.SEND_NOTIFICATION);
                     })
                     .catch(async (error) => {
@@ -59,7 +66,13 @@
             <label for="#">Введите E-mail</label>
             <InputText type="email"
                        v-model="email"
-                       class="w-100" />
+                       class="w-100"
+                       :invalid="this.errors !== null && 'email' in this.errors" />
+            <section id="errorField" v-if="this.errors !== null && 'email' in this.errors">
+                <small v-for="error in this.errors.email">
+                    <i class="pi pi-times-circle"></i> {{ error }}
+                </small>
+            </section>
         </div>
         <div class="form-block d-flex d-between">
             <Button type="button"

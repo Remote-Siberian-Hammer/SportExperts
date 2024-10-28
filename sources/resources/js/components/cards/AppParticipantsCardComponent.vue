@@ -57,7 +57,7 @@ import {IDENTIFIER, MESSAGES} from "../../constant";
 </script>
 
 <template>
-    <section v-if="this.userProps !== null && this.userProps.role === 'admin' && this.userInvites !== null && this.userInvites.length > 0" class="w-100 mt-5">
+    <section v-if="this.userProps !== null && this.userProps.role === 'admin' && this.userInvites !== null && this.userInvites.length > 0" class="w-100 mt-5 mb-5">
         <Card>
             <section>
                 <a href="#">
@@ -70,7 +70,7 @@ import {IDENTIFIER, MESSAGES} from "../../constant";
                 </div>
             </template>
             <template #content>
-                <DataTable :value="this.userInvites">
+                <DataTable :value="this.userInvites" class="mobile-none">
                     <Column header="">
                         <template #body>
                             <Image src="images/athlete_default_avatar.png" width="30" />
@@ -78,13 +78,13 @@ import {IDENTIFIER, MESSAGES} from "../../constant";
                     </Column>
                     <Column field="users.first_name" header="Имя"></Column>
                     <Column field="users.last_name" header="Фамилия"></Column>
-                    <Column v-if="this.userProps" header="">
+                    <!-- <Column v-if="this.userProps" header="">
                         <template #body>
                             <a :href="this.baseUrlProps + 'invite/detail?user_id=' + this.userProps.id">
                                 <Button type="button" label="Подробнее" severity="secondary"/>
                             </a>
                         </template>
-                    </Column>
+                    </Column> -->
                 </DataTable>
             </template>
             <template #footer>

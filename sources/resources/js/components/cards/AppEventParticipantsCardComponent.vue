@@ -31,7 +31,7 @@ export default {
                              class="option-list">
                         <div class="mb-3">
                             <strong>
-                                <a :href="this.baseUrl + 'participant/search?event=' + this.eventKeyProps">
+                                <a :href="this.baseUrl + 'participant/search?event=' + this.eventKeyProps" class="text-link">
                                     {{ participant.first_name }} {{ participant.last_name }}
                                 </a><br>
                             </strong>

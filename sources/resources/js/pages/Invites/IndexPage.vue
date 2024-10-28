@@ -140,7 +140,7 @@ export default {
                             <DataTable stripedRows :value="slotProps.data.events">
                                 <Column header="Название" sortable>
                                     <template #body="slotProps">
-                                        <a :href="this.baseUrl + 'event/detail?id=' + slotProps.data.id">
+                                        <a :href="this.baseUrl + 'event/detail?id=' + slotProps.data.id" class="text-link">
                                             <Button :label="slotProps.data.name" severity="info" link />
                                         </a>
                                     </template>

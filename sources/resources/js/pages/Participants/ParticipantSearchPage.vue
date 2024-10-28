@@ -44,12 +44,25 @@
         <section>
             <h2 class="text-center">Поиск спортсменов</h2>
         </section>
-        <section style="margin: 0 auto; width: 30%;">
+        <section style="
+            margin: 0 auto;
+            width: 30%;
+            @media(max-width: 480px) {
+                margin: 0 auto;
+                width: 85%;
+            }
+        ">
             <AppParticipantSearchFormComponent
                 :eventKeyProps="this.eventKey"
                 @participantsEmit="addParticipants"/>
         </section>
-        <section v-if="this.participants !== null" style="margin: 0 auto; width: 50%;">
+        <section v-if="this.participants !== null" style="
+                margin: 0 auto;
+                width: 50%;
+                @media(max-width: 480px) {
+                    width: 95%;
+                }
+        ">
             <section class="mt-5 mb-3">
                 <h3 class="text-center">Результаты поиска</h3>
             </section>

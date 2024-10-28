@@ -13,13 +13,14 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-
     <!-- Css & Scripts -->
     @vite([
-    'resources/css/app.css',
-    'resources/css/loader.css',
-    'resources/js/app.js'
+        'resources/css/app.css',
+        'resources/css/loader.css',
+        'resources/js/app.js'
     ])
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://unpkg.com/@vkid/sdk@<3.0.0/dist-sdk/umd/index.js"></script>
 </head>
 <body id="app">
     <app-header-component></app-header-component>

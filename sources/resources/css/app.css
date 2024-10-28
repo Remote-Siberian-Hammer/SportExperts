@@ -14,6 +14,11 @@
 a {
     text-decoration: none;
 }
+a.text-link {
+    /*color: #222;
+    text-decoration: revert;
+    font-weight: 900;*/
+}
 html, body{
     margin: 0;
     height: 100%;
@@ -272,4 +277,113 @@ ul.p-listbox-list{
 .pi-ban{
     color: #cf3232;
     font-weight: bold;
+}
+
+.mobile-view {
+    display: none;
+}
+
+#errorField{
+    color: #d75252;
+    font-weight: 500;
+    padding: 0.4em;
+}
+
+
+@media(max-width: 480px) {
+    h2{
+        font-size: 1.3em;
+        font-weight: 900;
+        width: 72%;
+        margin: 0 auto;
+        margin-bottom: 1.6em;
+    }
+    header #logo img {
+        display: block;
+        width: 75%;
+    }
+    header .p-menubar-button {
+        display: none;
+    }
+    header .p-menubar-end div.gap-2 {
+        width: 232%;
+        position: relative;
+        left: -131%;
+    }
+
+    .wm-100, .w-22, .w-25, .w-30, .w-40, .w-46, .w-50, .w-70 {
+        width: 100%;
+    }
+    .wrap{
+        flex-wrap: wrap;
+    }
+    .m-mt-10{
+        margin-bottom: 10%;
+    }
+    footer div.d-flex {
+        flex-wrap: wrap;
+    }
+    footer .w-70 {
+        margin-top: 2em;
+    }
+    footer section {
+        font-size: 0.7em;
+    }
+    #footerEnd p {
+        font-size: .7em;
+    }
+    .wrap-reverse {
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+    }
+    form{
+        width: 80%;
+        margin: 0 auto
+    }
+    .mobile-none {
+        display: none;
+    }
+    .mobile-view {
+        display: block;
+    }
+    .w-22e{
+        width: 75%;
+    }
+    #step-tournament{
+        display: none;
+    }
+    #body-tournament{
+        border-radius: 0!important;
+        background-color: rgb(236 236 236 / 0%)!important;
+    }
+    .active-athlete {
+        background-color: #0f172a;
+        color: #fff;
+    }
+    #body-tournament .p-card .p-card-body {
+        padding: 0.6em;
+    }
+    #athlete-card {
+        align-items: center;
+    }
+    #athlete-card span {
+        font-size: 0.8em;
+        font-weight: 600;
+    }
+    .scroll-bottom {
+        width: 100%!important;
+        background-color: #22222200!important;
+        box-shadow: none!important;
+    }
+    #tid{
+        width: 17em;
+    }
+    #action{
+        width: 92%!important;
+        margin: 0 auto;
+        margin-bottom: 1.3em;
+    }
+    #action button {
+        font-size: 0.7em;
+    }
 }

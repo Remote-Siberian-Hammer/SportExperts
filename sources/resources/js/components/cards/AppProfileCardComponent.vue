@@ -1,4 +1,5 @@
 <script>
+    import Avatar from 'primevue/avatar';
     import Card from "primevue/card";
     import Image from "primevue/image";
     import Button from "primevue/button";
@@ -11,6 +12,7 @@
             baseUrlProps: String,
         },
         components: {
+            Avatar,
             Card,
             Image,
             Button
@@ -32,7 +34,19 @@
             <template #content>
                 <div class="d-flex d-center">
                     <section>
-                        <Image src="images/athlete_default_avatar.png" width="250" />
+                        <Avatar :label="this.userProps.first_name[0] + '' + this.userProps.last_name[0]"
+                                class="mr-2"
+                                size="xlarge"
+                                style="
+                                    margin: 0 auto;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    border-radius: .4em;
+                                    background-color: #1e293b;
+                                    color: #fff;
+                                " />
+                        <!-- <Image src="images/athlete_default_avatar.png" width="250" /> -->
                         <div class="mt-06 d-flex d-center">
                             <h2 v-if="this.userProps !== null">
                                 <strong>{{ this.userProps.first_name }} {{ this.userProps.last_name }}</strong> <br>

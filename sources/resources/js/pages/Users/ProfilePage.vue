@@ -84,7 +84,7 @@ export default {
     <AppAlertComponent
         :messageSuccess="this.messageSuccess"
         :messageError="this.messageError" />
-    <section class="d-flex d-between container">
+    <section class="d-flex d-between container wrap">
         <div class="w-30">
             <AppProfileCardComponent
                 :userProps="this.user"

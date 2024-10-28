@@ -2,6 +2,7 @@
 import Image from "primevue/image";
 import Button from "primevue/button";
 import { BASE_URL } from "../../common/rpc";
+import {ENDPOINTS, TOKEN} from "../../constant";
 
 
 export default {
@@ -15,11 +16,11 @@ export default {
               [
                   {
                       text: 'События',
-                      url: '#',
+                      url: BASE_URL + ENDPOINTS.EVENT,
                   },
                   {
                       text: 'Вход',
-                      url: '#',
+                      url: BASE_URL + ENDPOINTS.LOGIN,
                   },
               ],
               [
@@ -43,6 +44,13 @@ export default {
         Image,
         Button
     },
+    async beforeMount() {
+        if (window.$cookies.isKey(TOKEN)) {
+            let itemIdx = this.footerMenu[0].indexOf((item) => { return item.text === 'Вход'; });
+            this.footerMenu[0].splice(itemIdx, 1);
+
+        }
+    }
 }
 </script>
 
@@ -77,13 +85,13 @@ export default {
 </template>
 
 <style scoped>
-.p-button.p-button-link,
-#footerEnd p,
-#footerEnd p a,
-#footerEnd small{
-    color: #fff;
-}
-#footerEnd p a{
-    text-decoration: underline;
-}
+    .p-button.p-button-link,
+    #footerEnd p,
+    #footerEnd p a,
+    #footerEnd small{
+        color: #fff;
+    }
+    #footerEnd p a{
+        text-decoration: underline;
+    }
 </style>

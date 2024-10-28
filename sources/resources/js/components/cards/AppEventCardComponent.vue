@@ -98,7 +98,13 @@
     <div class="w-50">
         <Card role="region">
             <template #header>
-                <h2 class="text-center">{{ this.event.name }}</h2>
+                <h2 class="text-center" style="
+                    @media(max-width: 480px) {
+                        width: 90%;
+                        margin: 0 auto;
+                        margin-top: 1.2em;
+                    }
+                ">{{ this.event.name }}</h2>
             </template>
             <template #content>
                 <div class="mb-1">

@@ -214,7 +214,9 @@ import {BASE_URL, MESSAGES, ENDPOINTS, IDENTIFIER, TRIGGER} from '../../constant
                 :messageError="this.messageError" />
             <section v-if="this.event">
                 <h2 class="text-center">{{ this.event.name }}</h2>
-                <section class="d-flex d-end mb-1" style="width: 97%;">
+                <section id="action" class="d-flex d-end mb-1" style="
+                    width: 97%;
+                ">
                     <a :href="this.baseUrl + 'tournament/history?event=' + this.eventKey"
                         style="position: relative; right: 1%;">
                         <Button v-if="this.rule === 'OWNER'"
@@ -228,7 +230,7 @@ import {BASE_URL, MESSAGES, ENDPOINTS, IDENTIFIER, TRIGGER} from '../../constant
                             label="Завершить турнир"
                             icon="pi pi-check-circle"
                             aria-label="Success"
-                            @click="this.tournamentStatusClosed()"/>
+                            @click="this.tournamentStatusClosed()" />
                     <div v-if="this.event.status !== 'Active'" class="mb-1">
                         <InlineMessage icon="pi pi-ban" severity="secondary">Событие завершено</InlineMessage>
                     </div>
@@ -236,7 +238,7 @@ import {BASE_URL, MESSAGES, ENDPOINTS, IDENTIFIER, TRIGGER} from '../../constant
 
             </section>
             <div class="d-flex d-between">
-                <div class="w-30 d-flex d-end">
+                <div class="w-30 d-flex d-end mobile-none">
                     <AppTournamentInfoCardComponent
                         :eventKeyProps="this.eventKey"
                         :eventStatusProps="this.event.status"

@@ -5,7 +5,7 @@
  */
 
 import './bootstrap';
-import { createApp } from 'vue';
+import {createApp} from 'vue';
 import VueCookies from 'vue-cookies'
 import PrimeVue from "primevue/config";
 import 'primevue/resources/themes/aura-light-blue/theme.css';
@@ -19,59 +19,73 @@ import '@vueup/vue-quill/dist/vue-quill.snow.css';
  */
 
 const app = createApp({});
-app.use(PrimeVue, { unstyled: false });
+app.use(PrimeVue, {unstyled: false});
 app.use(VueCookies, {
     expires: '7d',
     path: '/',
     domain: '',
     secure: '',
-    sameSite: 'Lax' ,
+    sameSite: 'Lax',
     partitioned: false
 });
 
 // Use Layouts
 import HeaderComponent from './components/layouts/AppHeaderComponent.vue';
+
 app.component('app-header-component', HeaderComponent);
 
 import AppFooterComponent from './components/layouts/AppFooterComponent.vue';
+
 app.component('app-footer-component', AppFooterComponent);
 
 
 // Use Pages
 import RegistrationView from './pages/Users/RegistrationPage.vue';
+
 app.component('registration-view', RegistrationView);
 
 import LoginView from './pages/Users/LoginPage.vue';
+
 app.component('login-view', LoginView);
 
 import RecoveryView from './pages/Users/RecoveryPage.vue';
+
 app.component('recovery-view', RecoveryView);
 
 import ProfileView from './pages/Users/ProfilePage.vue';
+
 app.component('profile-view', ProfileView);
 
 import Settings from './pages/Users/SettingsPage.vue';
+
 app.component('settings-view', Settings);
 
 import EventListView from './pages/Events/ListPage.vue';
+
 app.component('event-view', EventListView);
 
 import CreateOfUpdateView from './pages/Events/CreateOfUpdatePage.vue';
+
 app.component('event-create-of-update-view', CreateOfUpdateView);
 
 import EventDetailsView from './pages/Events/DetailsPage.vue';
+
 app.component('event-detail-view', EventDetailsView);
 
 import ParticipantSearchView from './pages/Participants/ParticipantSearchPage.vue';
+
 app.component('participant-search-view', ParticipantSearchView);
 
 import InviteView from './pages/Invites/IndexPage.vue';
+
 app.component('invite-view', InviteView);
 
 import TournamentView from './pages/Tournaments/IndexPage.vue';
+
 app.component('tournament-view', TournamentView);
 
 import TournamentHistoryView from './pages/Tournaments/HistoryPage.vue';
+
 app.component('tournament-history-view', TournamentHistoryView);
 
 /**

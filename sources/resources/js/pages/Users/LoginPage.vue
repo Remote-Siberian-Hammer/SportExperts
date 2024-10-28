@@ -5,6 +5,7 @@
     import AppWrapperComponent from "../../components/wrappers/AppWrapperComponent.vue";
     import { API_URL, ENDPOINTS } from "../../common/route/api";
     import { WEB_URL } from "../../common/route/web";
+    import AppSocialOAuthComponent from "../../components/AppSocialOAuthComponent.vue";
 
     export default {
         data() {
@@ -23,6 +24,7 @@
             AppLoginFormComponent,
             AppPageTitleComponent,
             AppWrapperComponent,
+            AppSocialOAuthComponent
         },
         methods: {
             addMessageError: function (data) {
@@ -47,5 +49,6 @@
             :baseUrl="this.webUrl"
             :endPoint="this.route.RECOVERY"
             @messageErrorEmit="addMessageError"/>
+       <AppSocialOAuthComponent />
     </AppWrapperComponent>
 </template>

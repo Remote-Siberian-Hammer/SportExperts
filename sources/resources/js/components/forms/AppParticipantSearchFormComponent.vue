@@ -9,6 +9,7 @@
     export default {
         data() {
             return {
+                errors: [],
                 first_name: null,
                 first_name_eng: null,
                 last_name: null,
@@ -31,6 +32,9 @@
             Button
         },
         methods: {
+            isValid: function(fields) {
+                this.errors = fields
+            },
             searchParticipants: async function () {
                 let attributes = {
                     event_key: this.eventKeyProps,
@@ -47,6 +51,10 @@
                 await participantSearchAthleteRequest(attributes)
                     .then(async (response) => {
                         console.log(response);
+                        if ('error' in response.data) {
+                            this.isValid(response.data.error.data);
+                            return;
+                        }
                         const data = await response.data.result.original;
                         this.participants = await data.attributes;
                         this.$emit('participantsEmit', this.participants);
@@ -69,40 +77,70 @@
 
 <template>
     <AppFormWrapperComponent>
-        <div class="d-flex d-between d-align-center">
+        <div class="d-flex d-between d-align-center wrap">
             <div class="form-block">
                 <label for="name">Имя</label>
                 <InputText type="text"
                            v-model="this.first_name"
-                           class="w-100" />
+                           class="w-100"
+                           :invalid="this.errors !== null && 'first_name' in this.errors" />
+                <section id="errorField" v-if="this.errors !== null && 'first_name' in this.errors">
+                    <small v-for="error in this.errors.first_name">
+                        <i class="pi pi-times-circle"></i> {{ error }}
+                    </small>
+                </section>
             </div>
             <div class="form-block">
                 <label for="nameLat">Имя на латинице</label>
                 <InputText type="text"
                            v-model="this.first_name_eng"
-                           class="w-100" />
+                           class="w-100"
+                           :invalid="this.errors !== null && 'first_name_eng' in this.errors" />
+                <section id="errorField" v-if="this.errors !== null && 'first_name_eng' in this.errors">
+                    <small v-for="error in this.errors.first_name_eng">
+                        <i class="pi pi-times-circle"></i> {{ error }}
+                    </small>
+                </section>
             </div>
         </div>
-        <div class="d-flex d-between d-align-center">
+        <div class="d-flex d-between d-align-center wrap">
             <div class="form-block">
                 <label for="lastName">Фамилия</label>
                 <InputText type="text"
                            v-model="this.last_name"
-                           class="w-100" />
+                           class="w-100"
+                           :invalid="this.errors !== null && 'last_name' in this.errors" />
+                <section id="errorField" v-if="this.errors !== null && 'last_name' in this.errors">
+                    <small v-for="error in this.errors.last_name">
+                        <i class="pi pi-times-circle"></i> {{ error }}
+                    </small>
+                </section>
             </div>
             <div class="form-block">
                 <label for="lastNameLat">Фамилия на латинице</label>
                 <InputText type="text"
                            v-model="this.last_name_eng"
-                           class="w-100" />
+                           class="w-100"
+                           :invalid="this.errors !== null && 'last_name_eng' in this.errors" />
+                <section id="errorField" v-if="this.errors !== null && 'last_name_eng' in this.errors">
+                    <small v-for="error in this.errors.last_name_eng">
+                        <i class="pi pi-times-circle"></i> {{ error }}
+                    </small>
+                </section>
             </div>
         </div>
-        <div class="d-flex d-between d-align-center">
+        <div class="d-flex d-between d-align-center wrap">
             <div class="form-block w-50">
                 <label for="#">Дата рождения</label>
                 <InputText type="date"
                            v-model="this.birth_date"
-                           class="w-100"/>
+                           class="w-100"
+                           :invalid="this.errors !== null && 'birth_date' in this.errors" />
+                <section id="errorField" v-if="this.errors !== null && 'birth_date' in this.errors">
+                    <small v-for="error in this.errors.birth_date">
+                        <i class="pi pi-times-circle"></i> {{ error }}
+                    </small>
+                </section>
             </div>
             <div class="form-block w-50">
                 <label for="#">Укажите пол</label>
@@ -126,18 +164,30 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex d-between d-align-center">
+        <div class="d-flex d-between d-align-center wrap">
             <div class="form-block">
                 <label for="#">Укажите вес</label>
                 <InputText type="number"
                            v-model="this.weight"
-                           class="w-100" />
+                           class="w-100"
+                           :invalid="this.errors !== null && 'weight' in this.errors" />
+                <section id="errorField" v-if="this.errors !== null && 'weight' in this.errors">
+                    <small v-for="error in this.errors.weight">
+                        <i class="pi pi-times-circle"></i> {{ error }}
+                    </small>
+                </section>
             </div>
             <div class="form-block">
                 <label for="#">Укажите рост</label>
                 <InputText type="number"
                            v-model="this.height"
-                           class="w-100" />
+                           class="w-100"
+                           :invalid="this.errors !== null && 'height' in this.errors" />
+                <section id="errorField" v-if="this.errors !== null && 'height' in this.errors">
+                    <small v-for="error in this.errors.height">
+                        <i class="pi pi-times-circle"></i> {{ error }}
+                    </small>
+                </section>
             </div>
         </div>
         <br>
