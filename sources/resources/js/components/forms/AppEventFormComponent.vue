@@ -1,6 +1,5 @@
 <script>
     import { createLogOptionRequest } from "../../api/CreateLogOptionRequest";
-    import { ENDPOINTS, IDENTIFIER, MESSAGES } from "../../constant";
     import {
         createEventOptionRequest,
         createEventRequest,
@@ -17,6 +16,9 @@
     import { uploadFileRequest } from "../../api/FileRequest";
     import { deleteOptionRequest } from "../../api/OptionRequest";
     import AppFormWrapperComponent from "../wrappers/AppFormWrapperComponent.vue";
+    import {MESSAGES} from "../../common/messages";
+    import {IDENTIFIER} from "../../common/fields";
+    import {ENDPOINTS} from "../../common/route/api";
 
     export default {
         name: 'AppEventFormComponent',

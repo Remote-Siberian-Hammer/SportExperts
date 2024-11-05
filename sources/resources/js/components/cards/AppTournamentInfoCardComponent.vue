@@ -1,13 +1,14 @@
 <script>
     import {getFreeParticipantsRequest, tournamentValueCreateRequest} from "../../api/TournamentValueRequest";
     import {createLogOptionRequest} from "../../api/CreateLogOptionRequest";
-    import {IDENTIFIER, MESSAGES} from "../../constant";
     import {getParticipantsToEventRequest} from "../../api/FilterRequest";
     import LeaderLine from "leader-line-vue";
     import {tournamentReadRequest} from "../../api/TournamentRequest";
     import Card from "primevue/card";
     import OrderList from "primevue/orderlist";
     import Button from "primevue/button";
+    import {MESSAGES} from "../../common/messages";
+    import {IDENTIFIER} from "../../common/fields";
 
     export default {
         data() {

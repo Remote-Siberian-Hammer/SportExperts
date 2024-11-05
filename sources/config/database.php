@@ -76,6 +76,10 @@ return [
             'prefix_indexes' => true,
             'search_path' => 'public',
             'sslmode' => 'prefer',
+            'dump' => [
+                'add_extra_option' => '--format=c',
+                'database_dump_file_extension' => 'backup',
+            ]
         ],
 
         'mongodb' => [

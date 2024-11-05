@@ -16,6 +16,6 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-storage/php-fpm-stderr.log
-storage/php-fpm-stdout.log
-storage/logs/worker.log
+/storage/php-fpm-stderr.log
+/storage/php-fpm-stdout.log
+/storage/logs/worker.log

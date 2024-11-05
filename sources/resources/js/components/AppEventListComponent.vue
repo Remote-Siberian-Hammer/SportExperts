@@ -3,9 +3,10 @@
     import Button from "primevue/button";
     import { getEventListRequest } from "../api/EventRequest";
     import { createLogOptionRequest} from "../api/CreateLogOptionRequest";
-    import { IDENTIFIER, MESSAGES } from "../constant";
     import { getRecordToEventsRequest } from "../api/FilterRequest";
     import InlineMessage from "primevue/inlinemessage";
+    import {MESSAGES} from "../common/messages";
+    import {IDENTIFIER} from "../common/fields";
 
     export default {
         data() {

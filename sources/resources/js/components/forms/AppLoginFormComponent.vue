@@ -1,11 +1,13 @@
 <script>
     import { authorizationRequest } from "../../api/AuthRequest";
-    import { ENDPOINTS, IDENTIFIER, MESSAGES, TOKEN } from "../../constant";
     import { createLogOptionRequest } from "../../api/CreateLogOptionRequest";
     import Card from 'primevue/card';
     import InputText from 'primevue/inputtext';
     import Button from 'primevue/button';
     import AppFormWrapperComponent from "../wrappers/AppFormWrapperComponent.vue";
+    import {IDENTIFIER, TOKEN} from "../../common/fields";
+    import {ENDPOINTS} from "../../common/route/api";
+    import {MESSAGES} from "../../common/messages";
 
     export default {
         data() {

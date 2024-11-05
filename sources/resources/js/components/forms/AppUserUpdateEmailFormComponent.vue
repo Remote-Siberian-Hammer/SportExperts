@@ -2,9 +2,10 @@
     import AppFormWrapperComponent from "../wrappers/AppFormWrapperComponent.vue";
     import InputText from "primevue/inputtext";
     import Button from "primevue/button";
-    import {IDENTIFIER, MESSAGES} from "../../constant";
     import {updateUserRequest} from "../../api/UserRequest";
     import {createLogOptionRequest} from "../../api/CreateLogOptionRequest";
+    import {MESSAGES} from "../../common/messages";
+    import {IDENTIFIER} from "../../common/fields";
 
     export default {
         data() {

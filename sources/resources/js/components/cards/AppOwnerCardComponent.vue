@@ -2,7 +2,7 @@
     import Card from "primevue/card";
     import {getEventParticipantRequest} from "../../api/FilterRequest";
     import {createLogOptionRequest} from "../../api/CreateLogOptionRequest";
-    import {MESSAGES} from "../../constant";
+    import {MESSAGES} from "../../common/messages";
 
     export default {
         data() {

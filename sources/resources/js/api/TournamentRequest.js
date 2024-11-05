@@ -1,13 +1,10 @@
-import {
-    BASE_URL,
-    REQUEST_METHOD_DEFAULT,
-    PROCEDURES
-} from '../constant';
 import { TournamentEndpointQuery } from './query/TournamentEndpointQuery';
+import {API_URL} from "../common/route/api";
+import {PROCEDURES} from "../common/procedures";
+import {REQUEST_METHOD_DEFAULT} from "../common/rpc";
 
 export async function tournamentReadRequest(attributes, tournamentQuery = new TournamentEndpointQuery()) {
-    // Для записи из списка спортсменов
-    tournamentQuery.setUrl(`${BASE_URL}api/v1/tournament/read`);
+    tournamentQuery.setUrl(`${API_URL}api/v1/tournament/read`);
     tournamentQuery.setHeaders();
     tournamentQuery.setMethod(`${PROCEDURES.tournament.read}@${REQUEST_METHOD_DEFAULT}`);
     tournamentQuery.setParams(attributes);

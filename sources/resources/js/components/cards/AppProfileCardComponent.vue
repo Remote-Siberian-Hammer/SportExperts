@@ -3,7 +3,7 @@
     import Card from "primevue/card";
     import Image from "primevue/image";
     import Button from "primevue/button";
-    import {IDENTIFIER, TOKEN} from "../../constant";
+    import {IDENTIFIER, TOKEN} from "../../common/fields";
 
     export default {
         props: {

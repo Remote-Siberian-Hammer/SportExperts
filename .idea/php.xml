@@ -266,6 +266,11 @@
       <path value="$PROJECT_DIR$/sources/vendor/paragonie/constant_time_encoding" />
       <path value="$PROJECT_DIR$/sources/vendor/vladimir-yuldashev/laravel-queue-rabbitmq" />
       <path value="$PROJECT_DIR$/sources/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/sources/vendor/spatie/laravel-signal-aware-command" />
+      <path value="$PROJECT_DIR$/sources/vendor/spatie/temporary-directory" />
+      <path value="$PROJECT_DIR$/sources/vendor/spatie/laravel-backup" />
+      <path value="$PROJECT_DIR$/sources/vendor/spatie/laravel-package-tools" />
+      <path value="$PROJECT_DIR$/sources/vendor/spatie/db-dumper" />
     </include_path>
   </component>
   <component name="PhpInterpreters">

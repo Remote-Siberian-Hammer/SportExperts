@@ -1,8 +1,10 @@
 <script>
-import {BASE_URL, TOKEN, IDENTIFIER, ENDPOINTS} from '../../constant';
 import Menubar from 'primevue/menubar';
 import Image from 'primevue/image';
 import Button from 'primevue/button';
+import {WEB_URL} from "../../common/route/web";
+import {ENDPOINTS} from "../../common/route/api";
+import {IDENTIFIER, TOKEN} from "../../common/fields";
 import Sidebar from 'primevue/sidebar';
 import AppMobileMenuComponent from "./AppMobileMenuComponent.vue";
 
@@ -10,7 +12,7 @@ export default {
     name: 'HeaderComponent',
     data() {
         return {
-            baseUrl: BASE_URL,
+            baseUrl: WEB_URL,
             token: null,
             visibleRight: false,
             route: ENDPOINTS,
@@ -19,25 +21,25 @@ export default {
                     label: 'Профиль',
                     icon: 'pi pi-user',
                     command: () => {
-                        window.location = BASE_URL + ENDPOINTS.PROFILE
+                        window.location = WEB_URL + ENDPOINTS.PROFILE
                     },
-                    href: BASE_URL + ENDPOINTS.PROFILE
+                    href: WEB_URL + ENDPOINTS.PROFILE
                 },
                 {
                     label: 'События',
                     icon: 'pi pi-calendar',
                     command: () => {
-                        window.location = BASE_URL + ENDPOINTS.EVENT
+                        window.location = WEB_URL + ENDPOINTS.EVENT
                     },
-                    href: BASE_URL + ENDPOINTS.EVENT
+                    href: WEB_URL + ENDPOINTS.EVENT
                 },
                 {
                     label: 'Настройки',
                     icon: 'pi pi-cog',
                     command: () => {
-                        window.location = BASE_URL + ENDPOINTS.PROFILE + ENDPOINTS.BASE + ENDPOINTS.SETTINGS
+                        window.location = WEB_URL + ENDPOINTS.PROFILE + ENDPOINTS.BASE + ENDPOINTS.SETTINGS
                     },
-                    href: BASE_URL + ENDPOINTS.PROFILE + ENDPOINTS.BASE + ENDPOINTS.SETTINGS
+                    href: WEB_URL + ENDPOINTS.PROFILE + ENDPOINTS.BASE + ENDPOINTS.SETTINGS
                 },
             ]
         };
@@ -58,7 +60,7 @@ export default {
         {
             window.$cookies.remove(TOKEN);
             window.$cookies.remove(IDENTIFIER);
-            window.location = BASE_URL;
+            window.location = WEB_URL;
         }
     },
     beforeMount() {

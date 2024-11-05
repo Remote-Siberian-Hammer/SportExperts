@@ -1,5 +1,5 @@
 import axios from "axios";
-import { JSON_RPC_VERSION } from '../../constant';
+import {JSON_RPC_VERSION} from "../../common/rpc";
 
 /**
  * Класс занимается сборкой реквестов, респонсы нужно смотреть в реализациях
@@ -75,7 +75,7 @@ export class RequestBuilder {
      * @param accessToken
      */
     isAuth(accessToken) {
-        this.headers['Authorization'] = `Bearer ${accessToken}`;
+        this.headers['Authorization'] = accessToken;
     }
 
     /**

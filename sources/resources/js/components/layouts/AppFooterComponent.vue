@@ -1,14 +1,15 @@
 <script>
 import Image from "primevue/image";
 import Button from "primevue/button";
-import { BASE_URL } from "../../common/rpc";
-import {ENDPOINTS, TOKEN} from "../../constant";
+import {WEB_URL} from "../../common/route/web";
+import {ENDPOINTS} from "../../common/route/api";
+import {TOKEN} from "../../common/fields";
 
 
 export default {
     data() {
       return {
-          webUrl: BASE_URL,
+          webUrl: WEB_URL,
           postscriptText: 'Продолжая использовать наш сайт, вы даете согласие на обработку файлов cookies и других пользовательских данных, в соответствии с ',
           postscriptUrlText: 'Политикой конфиденциальности',
           postscriptUrl: '#',
@@ -16,11 +17,11 @@ export default {
               [
                   {
                       text: 'События',
-                      url: BASE_URL + ENDPOINTS.EVENT,
+                      url: WEB_URL + ENDPOINTS.EVENT,
                   },
                   {
                       text: 'Вход',
-                      url: BASE_URL + ENDPOINTS.LOGIN,
+                      url: WEB_URL + ENDPOINTS.LOGIN,
                   },
               ],
               [

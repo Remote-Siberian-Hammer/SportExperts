@@ -5,7 +5,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/sources/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/sources/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/src/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/sources/app" isTestSource="false" packagePrefix="App\" />
@@ -261,6 +260,11 @@
       <excludeFolder url="file://$MODULE_DIR$/sources/vendor/php-amqplib/php-amqplib" />
       <excludeFolder url="file://$MODULE_DIR$/sources/vendor/phpseclib/phpseclib" />
       <excludeFolder url="file://$MODULE_DIR$/sources/vendor/vladimir-yuldashev/laravel-queue-rabbitmq" />
+      <excludeFolder url="file://$MODULE_DIR$/sources/vendor/spatie/db-dumper" />
+      <excludeFolder url="file://$MODULE_DIR$/sources/vendor/spatie/laravel-backup" />
+      <excludeFolder url="file://$MODULE_DIR$/sources/vendor/spatie/laravel-package-tools" />
+      <excludeFolder url="file://$MODULE_DIR$/sources/vendor/spatie/laravel-signal-aware-command" />
+      <excludeFolder url="file://$MODULE_DIR$/sources/vendor/spatie/temporary-directory" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -12,10 +12,9 @@
     import { createOptionRequest } from "../../api/OptionRequest";
     import { eventRecordRequest } from "../../api/ParticipantRequest";
     import { MESSAGES } from "../../common/messages";
-    import { ENDPOINTS } from "../../common/route/api";
     import AppFormWrapperComponent from "../wrappers/AppFormWrapperComponent.vue";
-    import {IDENTIFIER} from "../../constant";
     import SelectButton from "primevue/selectbutton";
+    import {IDENTIFIER} from "../../common/fields";
 
     export default {
         data() {
@@ -226,7 +225,7 @@
                             i++;
                         }
                         await this.eventRecord(attributesRecord);
-                        // window.location = this.baseUrl + ENDPOINTS.LOGIN;
+                        window.location = this.baseUrl + ENDPOINTS.LOGIN;
                         return;
                     }
 
@@ -240,7 +239,7 @@
                             const data = response.data.result.original;
                             await this.$emit('messageSuccessEmit', MESSAGES.FORM_SUCCESS);
                             this.userModel = Object.assign(new UserModel(), data.attributes);
-                            // window.location = this.baseUrl + ENDPOINTS.LOGIN;
+                            window.location = this.baseUrl + ENDPOINTS.LOGIN;
                         })
                         .catch(async (error) => {
                             console.log(error)

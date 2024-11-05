@@ -1,11 +1,12 @@
 <script>
-import {IDENTIFIER, MESSAGES} from "../../constant";
 import {getUser} from "../../api/UserRequest";
 import {createLogOptionRequest} from "../../api/CreateLogOptionRequest";
 import {getTournamentHistoryRequest} from "../../api/TournamentHistoryRequest";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import Tag from "primevue/tag";
+import {IDENTIFIER} from "../../common/fields";
+import {MESSAGES} from "../../common/messages";
 
 export default {
         data() {

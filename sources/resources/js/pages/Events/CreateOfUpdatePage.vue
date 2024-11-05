@@ -1,17 +1,20 @@
 <script>
-    import {BASE_URL, ENDPOINTS, IDENTIFIER, MESSAGES} from "../../constant";
     import { getEventRequest } from '../../api/EventRequest';
     import '@vueup/vue-quill/dist/vue-quill.snow.css';
     import {createLogOptionRequest} from "../../api/CreateLogOptionRequest";
     import AppAlertComponent from "../../components/AppAlertComponent.vue";
     import AppEventFormComponent from "../../components/forms/AppEventFormComponent.vue";
     import AppUserCreateOrUpdateOptionFormComponent from "../../components/forms/AppUserCreateOrUpdateOptionFormComponent.vue";
+    import {WEB_URL} from "../../common/route/web";
+    import {ENDPOINTS} from "../../common/route/api";
+    import {IDENTIFIER} from "../../common/fields";
+    import {MESSAGES} from "../../common/messages";
 
     export default {
         data() {
             return {
                 banner: null,
-                baseUrl: BASE_URL,
+                baseUrl: WEB_URL,
                 route: ENDPOINTS,
                 messageError: null,
                 messageSuccess: null,

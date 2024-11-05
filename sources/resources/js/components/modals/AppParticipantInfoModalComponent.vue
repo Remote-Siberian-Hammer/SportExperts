@@ -3,7 +3,6 @@
     import Dialog from 'primevue/dialog';
     import {getUser} from "../../api/UserRequest";
     import {createLogOptionRequest} from "../../api/CreateLogOptionRequest";
-    import {MESSAGES, TRIGGER} from "../../constant";
     import {readUserParticipantInvitedRequest} from "../../api/InvitedRequest";
     import {getParticipantsToEventRequest} from "../../api/FilterRequest";
     import {
@@ -12,6 +11,8 @@
         participantUserSkipAdditionallyRequest
     } from "../../api/ParticipantRequest";
     import {tournamentReadRequest} from "../../api/TournamentRequest";
+    import {MESSAGES} from "../../common/messages";
+    import {TRIGGER} from "../../common/fields";
 
     export default {
         data() {

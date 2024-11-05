@@ -1,4 +1,4 @@
-export const PROCEDURE= {
+export const PROCEDURES= {
     users: {
         registration:           'UserRegistrationProcedure',
         read:                   'UserReadProcedure',
@@ -57,6 +57,12 @@ export const PROCEDURE= {
             filter: {
                 free:           'TournamentValueFreeParticipantsFilterProcedure'
             }
+        },
+        admin: {
+            list: 'TournamentAdminListProcedure'
+        },
+        history: {
+            read: 'TournamentHistoryReadProcedure'
         }
     }
 };

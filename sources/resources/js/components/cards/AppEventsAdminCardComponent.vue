@@ -1,5 +1,4 @@
 <script>
-import {IDENTIFIER, MESSAGES, RESPONSE} from "../../constant";
 import {getEventOwnerRequest} from "../../api/FilterRequest";
 import {createLogOptionRequest} from "../../api/CreateLogOptionRequest";
 import {createArchiveRequest, removeArchiveRequest} from "../../api/ArchiveRequest";
@@ -8,6 +7,8 @@ import TabView from "primevue/tabview";
 import TabPanel from "primevue/tabpanel";
 import InlineMessage from "primevue/inlinemessage";
 import Button from "primevue/button";
+import {IDENTIFIER} from "../../common/fields";
+import {MESSAGES} from "../../common/messages";
 
     export default {
         data() {

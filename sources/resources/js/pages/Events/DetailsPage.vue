@@ -1,5 +1,4 @@
 <script>
-    import {BASE_URL, ENDPOINTS, IDENTIFIER, MESSAGES, TOKEN} from "../../constant";
     import { getUser, getInvitedOwnerRequest } from "../../api/UserRequest";
     import { getEventRequest } from '../../api/EventRequest';
     import Image from 'primevue/image';
@@ -7,11 +6,15 @@
     import AppAlertComponent from "../../components/AppAlertComponent.vue";
     import AppEventCardComponent from "../../components/cards/AppEventCardComponent.vue";
     import AppModalInvitesComponent from "../../components/modals/AppModalInvitesComponent.vue";
+    import {WEB_URL} from "../../common/route/web";
+    import {ENDPOINTS} from "../../common/route/api";
+    import {IDENTIFIER, TOKEN} from "../../common/fields";
+    import {MESSAGES} from "../../common/messages";
 
     export default {
         data(){
             return {
-                baseUrl: BASE_URL,
+                baseUrl: WEB_URL,
                 currentDate: new Date(),
                 route: ENDPOINTS,
                 messageError: null,

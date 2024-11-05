@@ -1,11 +1,11 @@
 <script>
-import {IDENTIFIER, MESSAGES} from "../../constant";
     import {listInvitedRequest} from "../../api/InvitedRequest";
     import {createLogOptionRequest} from "../../api/CreateLogOptionRequest";
     import Card from "primevue/card";
     import DataTable from "primevue/datatable";
     import Column from "primevue/column";
     import Button from "primevue/button";
+    import {IDENTIFIER} from "../../common/fields";
 
     export default {
         data() {
@@ -46,7 +46,6 @@ import {IDENTIFIER, MESSAGES} from "../../constant";
                             request_data: attributes.toString(),
                             message: error.message
                         });
-                        // this.$emit('messageErrorEmit', MESSAGES.NO_DATA);
                     });
             },
         },

@@ -3,8 +3,9 @@
     import InputText from "primevue/inputtext";
     import Button from "primevue/button";
     import { createOptionRequest, updateOptionRequest } from "../../api/OptionRequest";
-    import {IDENTIFIER, MESSAGES} from "../../constant";
     import {createLogOptionRequest} from "../../api/CreateLogOptionRequest";
+    import {IDENTIFIER} from "../../common/fields";
+    import {MESSAGES} from "../../common/messages";
 
     export default {
         data() {

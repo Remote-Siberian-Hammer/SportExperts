@@ -4,8 +4,8 @@
     import Card from "primevue/card";
     import {tournamentReadRequest} from "../api/TournamentRequest";
     import {createLogOptionRequest} from "../api/CreateLogOptionRequest";
-    import {MESSAGES} from "../constant";
     import AppParticipantsCardComponent from "./cards/AppParticipantsCardComponent.vue";
+    import {MESSAGES} from "../common/messages";
 
     export default {
         data() {

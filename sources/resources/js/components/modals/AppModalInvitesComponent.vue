@@ -1,6 +1,5 @@
 <script>
     import { addNotificationUserInviteEventRequest } from "../../api/InvitedRequest";
-    import { IDENTIFIER, MESSAGES } from "../../constant";
     import { createLogOptionRequest } from "../../api/CreateLogOptionRequest";
     import { recordUserToEventRequest } from "../../api/ParticipantRequest";
     import { getInvitedOwnerRequest } from "../../api/UserRequest";
@@ -9,6 +8,8 @@
     import InputText from "primevue/inputtext";
     import Button from "primevue/button";
     import AppAlertComponent from "../AppAlertComponent.vue";
+    import {IDENTIFIER} from "../../common/fields";
+    import {MESSAGES} from "../../common/messages";
 
     export default {
         data() {

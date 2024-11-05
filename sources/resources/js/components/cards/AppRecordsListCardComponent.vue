@@ -1,10 +1,11 @@
 <script>
-    import {IDENTIFIER, MESSAGES} from "../../constant";
     import {getRecordToEventsRequest} from "../../api/FilterRequest";
     import {createLogOptionRequest} from "../../api/CreateLogOptionRequest";
     import Card from "primevue/card";
     import InlineMessage from "primevue/inlinemessage";
     import Button from "primevue/button";
+    import {IDENTIFIER} from "../../common/fields";
+    import {MESSAGES} from "../../common/messages";
 
     export default {
         data() {

@@ -1,12 +1,5 @@
 <script>
-import {
-    BASE_URL,
-    TOKEN,
-    IDENTIFIER,
-    MESSAGES,
-    RESPONSE,
-    ENDPOINTS
-} from '../../constant';
+
 import { getUser } from '../../api/UserRequest';
 import { createLogOptionRequest } from '../../api/CreateLogOptionRequest';
 import AppRoleTitleComponent from "../../components/AppRoleTitleComponent.vue";
@@ -17,12 +10,16 @@ import AppParticipantsCardComponent from "../../components/cards/AppParticipants
 import AppEventsAdminCardComponent from "../../components/cards/AppEventsAdminCardComponent.vue";
 import AppRegistrationFormComponent from "../../components/forms/AppRegistrationFormComponent.vue";
 import AppRecordsListCardComponent from "../../components/cards/AppRecordsListCardComponent.vue";
+import {WEB_URL} from "../../common/route/web";
+import {ENDPOINTS} from "../../common/route/api";
+import {IDENTIFIER, TOKEN} from "../../common/fields";
+import {MESSAGES} from "../../common/messages";
 
 
 export default {
     data() {
         return {
-            baseUrl: BASE_URL,
+            baseUrl: WEB_URL,
             route: ENDPOINTS,
             user: null,
             token: null,

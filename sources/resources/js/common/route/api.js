@@ -1,4 +1,4 @@
-export const API_URL = 'http://localhost:8080/';
+export const API_URL =`${import.meta.env.VITE_HTTP_PROTOCOL}://${import.meta.env.VITE_HTTP_HOST}:${import.meta.env.VITE_HTTP_PORT}/`;
 export const ENDPOINTS = {
     API: {
         LIST: 'list',

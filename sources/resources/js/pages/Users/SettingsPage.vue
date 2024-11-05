@@ -1,10 +1,4 @@
 <script>
-import {
-    BASE_URL,
-    ENDPOINTS,
-    IDENTIFIER,
-    MESSAGES
-} from '../../constant';
 import { getUser, updateUserRequest } from '../../api/UserRequest';
 import Breadcrumb from 'primevue/breadcrumb';
 import Card from 'primevue/card';
@@ -23,6 +17,10 @@ import AppUserUpdatePhoneFormComponent from "../../components/forms/AppUserUpdat
 import AppUserUpdatePasswordFormComponent from "../../components/forms/AppUserUpdatePasswordFormComponent.vue";
 import AppUserCreateOrUpdateOptionFormComponent
     from "../../components/forms/AppUserCreateOrUpdateOptionFormComponent.vue";
+import {WEB_URL} from "../../common/route/web";
+import {ENDPOINTS} from "../../common/route/api";
+import {IDENTIFIER} from "../../common/fields";
+import {MESSAGES} from "../../common/messages";
 
 export default {
     data() {
@@ -31,7 +29,7 @@ export default {
           messageError: null,
           route: ENDPOINTS,
           currentDate: new Date(),
-          baseUrl: BASE_URL,
+          baseUrl: WEB_URL,
           user: null,
           options: [
               {

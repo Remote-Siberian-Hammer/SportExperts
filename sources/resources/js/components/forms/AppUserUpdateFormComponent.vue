@@ -1,12 +1,13 @@
 <script>
     import AppFormWrapperComponent from "../wrappers/AppFormWrapperComponent.vue";
-    import {IDENTIFIER, MESSAGES} from "../../constant";
     import {updateUserRequest} from "../../api/UserRequest";
     import {createLogOptionRequest} from "../../api/CreateLogOptionRequest";
     import InputText from "primevue/inputtext";
     import Calendar from "primevue/calendar";
     import Button from "primevue/button";
     import SelectButton from "primevue/selectbutton";
+    import {IDENTIFIER} from "../../common/fields";
+    import {MESSAGES} from "../../common/messages";
 
     export default {
         data() {

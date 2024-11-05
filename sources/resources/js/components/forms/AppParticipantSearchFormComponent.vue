@@ -2,9 +2,9 @@
     import AppFormWrapperComponent from "../wrappers/AppFormWrapperComponent.vue";
     import InputText from "primevue/inputtext";
     import Button from "primevue/button";
-    import {MESSAGES} from "../../constant";
     import {createLogOptionRequest} from "../../api/CreateLogOptionRequest";
     import {participantSearchAthleteRequest} from "../../api/ParticipantRequest";
+    import {MESSAGES} from "../../common/messages";
 
     export default {
         data() {

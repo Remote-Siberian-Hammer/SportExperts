@@ -1,5 +1,5 @@
 <img src="https://avatars.githubusercontent.com/u/153977186?s=400&u=7268ad55ed694cec25c1467486710abb82bc9ad8&v=4" style="width: 10%">
-<h2>Remote-Siberian-Hammer</h2>
+<h2>Remote Technology</h2>
 <br>
 <h3>Используемые технологии:</h3>
 <ul>
@@ -49,7 +49,7 @@
     <li>
         <p>
             <span>Установить зависимости:</span><br>
-            <b style="color: #222;">(sudo) docker-compose run php-fpm composer install</b><br>
+            <b style="color: #222;">(sudo) docker-compose run php-fpm composer (--ignore-platform-req=ext-sockets) install</b><br>
             <b style="color: #222;">(sudo) docker-compose run node install</b><br>
         </p>
     </li>

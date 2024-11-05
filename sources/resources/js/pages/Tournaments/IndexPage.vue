@@ -1,5 +1,4 @@
 <script>
-import {BASE_URL, MESSAGES, ENDPOINTS, IDENTIFIER, TRIGGER} from '../../constant';
     import { createLogOptionRequest } from "../../api/CreateLogOptionRequest";
     import {getKeyEventRequest, statusEventUpdate} from "../../api/EventRequest";
     import AppParticipantInfoModalComponent from "../../components/modals/AppParticipantInfoModalComponent.vue";
@@ -13,13 +12,17 @@ import {BASE_URL, MESSAGES, ENDPOINTS, IDENTIFIER, TRIGGER} from '../../constant
     import {getTournamentAdminRequest} from "../../api/TournamentAdminRequest";
     import Button from 'primevue/button';
     import InlineMessage from "primevue/inlinemessage";
+    import {WEB_URL} from "../../common/route/web";
+    import {IDENTIFIER, TRIGGER} from "../../common/fields";
+    import {MESSAGES} from "../../common/messages";
+    import {ENDPOINTS} from "../../common/route/api";
 
     export default {
         data() {
             return {
                 messageSuccess: null,
                 messageError: null,
-                baseUrl: BASE_URL,
+                baseUrl: WEB_URL,
                 eventKey: '',
                 event: null,
                 user: null,

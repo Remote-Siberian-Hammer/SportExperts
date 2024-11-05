@@ -1,11 +1,11 @@
 <script>
 import Card from "primevue/card";
-import {BASE_URL} from "../../common/rpc";
+import {WEB_URL} from "../../common/route/web";
 
 export default {
     data() {
       return {
-          baseUrl: BASE_URL
+          baseUrl: WEB_URL
       }
     },
     components: {

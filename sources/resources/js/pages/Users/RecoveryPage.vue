@@ -1,15 +1,15 @@
 <script>
-    import { BASE_URL } from '../../constant';
     import Message from 'primevue/message';
     import AppResetFormComponent from "../../components/forms/AppResetFormComponent.vue";
     import AppAlertComponent from "../../components/AppAlertComponent.vue";
     import AppRegistrationFormComponent from "../../components/forms/AppRegistrationFormComponent.vue";
     import AppWrapperComponent from "../../components/wrappers/AppWrapperComponent.vue";
+    import {WEB_URL} from "../../common/route/web";
 
     export default {
         data() {
             return {
-                baseUrl: BASE_URL,
+                baseUrl: WEB_URL,
                 messageError: null,
                 messageSuccess: null,
             };

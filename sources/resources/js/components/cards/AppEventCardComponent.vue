@@ -1,20 +1,21 @@
 <script>
     import Button from 'primevue/button';
     import Card from "primevue/card";
-    import { IDENTIFIER, MESSAGES } from "../../constant";
     import { recordUserToEventRequest } from "../../api/ParticipantRequest";
     import { createLogOptionRequest } from "../../api/CreateLogOptionRequest";
     import AppModalInvitesComponent from "../modals/AppModalInvitesComponent.vue";
     import AppEventOptionsCardComponent from "./AppEventOptionsCardComponent.vue";
     import AppEventParticipantsCardComponent from "./AppEventParticipantsCardComponent.vue";
-    import {BASE_URL} from "../../common/rpc";
     import InlineMessage from "primevue/inlinemessage";
+    import {IDENTIFIER} from "../../common/fields";
+    import {MESSAGES} from "../../common/messages";
+    import {WEB_URL} from "../../common/route/web";
 
     export default {
         data() {
           return {
               currentDate: new Date(),
-              baseUrl: BASE_URL,
+              baseUrl: WEB_URL,
               dialog: false,
               eventId: null,
               event: null,

@@ -1,6 +1,7 @@
 <script>
     import Button from 'primevue/button';
-    import {BASE_URL, IDENTIFIER, TOKEN} from "../../constant";
+    import {IDENTIFIER, TOKEN} from "../../common/fields";
+    import {WEB_URL} from "../../common/route/web";
 
     export default {
         props: {
@@ -14,7 +15,7 @@
             {
                 window.$cookies.remove(TOKEN);
                 window.$cookies.remove(IDENTIFIER);
-                window.location = BASE_URL;
+                window.location = WEB_URL;
             }
         }
     }

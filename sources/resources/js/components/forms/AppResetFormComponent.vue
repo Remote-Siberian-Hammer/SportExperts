@@ -1,11 +1,11 @@
 <script>
     import AppFormWrapperComponent from "../wrappers/AppFormWrapperComponent.vue";
     import { resetToPasswordRequest } from "../../api/UserRequest";
-    import { MESSAGES } from "../../constant";
     import { createLogOptionRequest } from "../../api/CreateLogOptionRequest";
     import Card from "primevue/card";
     import InputText from "primevue/inputtext";
     import Button from "primevue/button";
+    import {MESSAGES} from "../../common/messages";
 
     export default {
         data() {

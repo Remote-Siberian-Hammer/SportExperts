@@ -1,14 +1,11 @@
-import {
-    BASE_URL,
-    JSON_RPC_VERSION,
-    REQUEST_METHOD_DEFAULT,
-    PROCEDURES
-} from '../constant';
-import { ArchiveEndpointQuery } from './query/ArchiveEndpointQuery';
+import {ArchiveEndpointQuery} from './query/ArchiveEndpointQuery';
+import {PROCEDURES} from "../common/procedures";
+import {API_URL} from "../common/route/api";
+import {REQUEST_METHOD_DEFAULT} from "../common/rpc";
 
 export async function createArchiveRequest(attributes, archiveQuery  = new ArchiveEndpointQuery())
 {
-    archiveQuery.setUrl(`${BASE_URL}api/v1/event/archive/store`);
+    archiveQuery.setUrl(`${API_URL}api/v1/event/archive/store`);
     archiveQuery.setHeaders();
     archiveQuery.setMethod(`${PROCEDURES.archive.create}@${REQUEST_METHOD_DEFAULT}`);
     archiveQuery.setParams(attributes);
@@ -17,7 +14,7 @@ export async function createArchiveRequest(attributes, archiveQuery  = new Archi
 
 export async function removeArchiveRequest(attributes, archiveQuery  = new ArchiveEndpointQuery())
 {
-    archiveQuery.setUrl(`${BASE_URL}api/v1/event/archive/destroy`);
+    archiveQuery.setUrl(`${API_URL}api/v1/event/archive/destroy`);
     archiveQuery.setHeaders();
     archiveQuery.setMethod(`${PROCEDURES.archive.delete}@${REQUEST_METHOD_DEFAULT}`);
     archiveQuery.setParams(attributes);

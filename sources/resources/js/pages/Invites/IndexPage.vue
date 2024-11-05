@@ -1,11 +1,4 @@
 <script>
-import {
-    BASE_URL,
-    IDENTIFIER,
-    MESSAGES,
-    ENDPOINTS,
-    RESPONSE
-} from "../../constant";
 import Card from 'primevue/card';
 import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
@@ -21,13 +14,19 @@ import Tag from 'primevue/tag';
 import {listInvitedRequest} from "../../api/InvitedRequest";
 import {createLogOptionRequest} from "../../api/CreateLogOptionRequest";
 import AppAlertComponent from "../../components/AppAlertComponent.vue";
+import {WEB_URL} from "../../common/route/web";
+import {MESSAGES} from "../../common/messages";
+import {ENDPOINTS} from "../../common/route/api";
+import {IDENTIFIER} from "../../common/fields";
 
 export default {
     data() {
         return {
-            baseUrl: BASE_URL,
+            baseUrl: WEB_URL,
             noData: MESSAGES.NO_DATA,
-            response: RESPONSE,
+            response: {
+                data: 'data'
+            },
             route: ENDPOINTS,
             currentDate: new Date(),
             user: null,
