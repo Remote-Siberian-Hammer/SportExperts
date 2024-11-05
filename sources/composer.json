@@ -16,6 +16,7 @@
         "mongodb/laravel-mongodb": "^4.3",
         "php-amqplib/php-amqplib": "^3.7",
         "sajya/server": "^6.1",
+        "sentry/sentry-laravel": "^4.9",
         "spatie/laravel-backup": "^9.1",
         "vladimir-yuldashev/laravel-queue-rabbitmq": "^14.1"
     },
